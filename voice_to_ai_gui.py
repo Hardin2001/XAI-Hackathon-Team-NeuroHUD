@@ -22,7 +22,6 @@ from ai_client import AIClient
 from tts_client import TTSClient
 from PIL import Image, ImageDraw, ImageFont, ImageTk
 
-# 尝试导入音频播放库
 HAS_PYGAME = False
 HAS_PLAYSOUND = False
 pygame = None
@@ -81,15 +80,12 @@ class VoiceToAIGUI:
         self.interrupt_processing = False
         self.current_process_thread = None
         
-        # 初始化AI客户端
         self.ai_client = AIClient(api_key_file)
-        
-        # 初始化TTS客户端
+
         self.tts_client = TTSClient(api_key_file)
-        self.tts_voice = "ara"  # 默认语音（流式TTS使用小写）
-        self.use_streaming_tts = True  # 使用流式TTS
-        
-        # 初始化STT API密钥
+        self.tts_voice = "ara" 
+        self.use_streaming_tts = True  
+
         if stt_api_key_file is None:
             stt_api_key_file = api_key_file
         self.stt_api_key = self._read_api_key(stt_api_key_file)
@@ -571,4 +567,5 @@ if __name__ == "__main__":
     # Create and run GUI application
     app = VoiceToAIGUI()
     app.run()
+
 
